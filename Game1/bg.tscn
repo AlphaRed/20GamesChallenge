@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://x7djjlikg86h"]
+
+[ext_resource type="Texture2D" uid="uid://dvts55klacg7r" path="res://sprites/bg.jpeg" id="1_g8mjc"]
+[ext_resource type="Script" path="res://bg.gd" id="2_rptfy"]
+[ext_resource type="PackedScene" uid="uid://1k5heb0fkbym" path="res://pipe.tscn" id="3_kg0be"]
+
+[node name="bg" type="Sprite2D"]
+position = Vector2(160, 128)
+texture = ExtResource("1_g8mjc")
+script = ExtResource("2_rptfy")
+
+[node name="pipe" parent="." instance=ExtResource("3_kg0be")]
+position = Vector2(41, 48)
+
+[node name="pipe2" parent="." instance=ExtResource("3_kg0be")]
+position = Vector2(93, -48)
+rotation = 3.14159
+
+[connection signal="body_entered" from="pipe" to="." method="_on_pipe_body_entered"]
+[connection signal="body_entered" from="pipe2" to="." method="_on_pipe_2_body_entered"]

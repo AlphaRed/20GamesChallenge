@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpxube5l33n1m"]
+
+[ext_resource type="PackedScene" uid="uid://x7djjlikg86h" path="res://bg.tscn" id="2_mffqk"]
+[ext_resource type="PackedScene" uid="uid://5qmaejjyh4af" path="res://bounds.tscn" id="3_ba0r5"]
+[ext_resource type="PackedScene" uid="uid://osd2eqcrsat4" path="res://glider.tscn" id="3_ulcga"]
+[ext_resource type="Script" path="res://score.gd" id="5_tmerk"]
+
+[node name="World" type="Node2D"]
+
+[node name="glider" parent="." instance=ExtResource("3_ulcga")]
+top_level = true
+position = Vector2(14, 107)
+
+[node name="bg" parent="." instance=ExtResource("2_mffqk")]
+
+[node name="bg2" parent="." instance=ExtResource("2_mffqk")]
+position = Vector2(480, 128)
+
+[node name="bounds" parent="." instance=ExtResource("3_ba0r5")]
+
+[node name="bounds2" parent="." instance=ExtResource("3_ba0r5")]
+position = Vector2(0, 192)
+
+[node name="score" type="Label" parent="."]
+offset_left = 140.0
+offset_top = 109.0
+offset_right = 180.0
+offset_bottom = 132.0
+size_flags_horizontal = 4
+script = ExtResource("5_tmerk")
+
+[connection signal="game_over" from="glider" to="score" method="_on_glider_game_over"]
+[connection signal="offscreen" from="bg" to="score" method="_on_bg_offscreen"]
+[connection signal="player_collide" from="bg" to="glider" method="_on_bg_player_collide"]
+[connection signal="offscreen" from="bg2" to="score" method="_on_bg_2_offscreen"]
+[connection signal="player_collide" from="bg2" to="glider" method="_on_bg_2_player_collide"]
+[connection signal="body_entered" from="bounds" to="glider" method="_on_bounds_body_entered"]
+[connection signal="body_entered" from="bounds2" to="glider" method="_on_bounds_2_body_entered"]

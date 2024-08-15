@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://osd2eqcrsat4"]
+
+[ext_resource type="Texture2D" uid="uid://cx2k71ovh57ei" path="res://sprites/glider.png" id="1_4k3yc"]
+[ext_resource type="Script" path="res://glider.gd" id="1_35ikm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_najfo"]
+size = Vector2(28, 30)
+
+[node name="glider" type="CharacterBody2D"]
+script = ExtResource("1_35ikm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4k3yc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_najfo")
