@@ -16,6 +16,8 @@ func _process(delta):
 	if Input.is_action_pressed("lift"):
 		if GAMEOVER == false:
 			velocity.y -= LIFT_VEL * delta
+		if GAMEOVER == true:
+			get_tree().reload_current_scene()
 	
 	if GAMEOVER == true:
 		velocity.y = 0
@@ -42,11 +44,3 @@ func _on_bg_player_collide():
 
 func _on_bg_2_player_collide():
 	GAMEOVER = true
-
-
-func _on_bg_offscreen():
-	pass # Replace with function body.
-
-
-func _on_bg_2_offscreen():
-	pass # Replace with function body.
