@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://pwohqpswxd5b"]
+
+[ext_resource type="Texture2D" uid="uid://ckd0i3jxqqloa" path="res://sprites/bg.jpeg" id="1_qgk0u"]
+[ext_resource type="PackedScene" uid="uid://cvlio1au508ij" path="res://paddle.tscn" id="2_uhelh"]
+
+[node name="world" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160, 120)
+texture = ExtResource("1_qgk0u")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(41, 238, 42, 22, 278, 22, 279, 238, 296, 237, 294, 9, 29, 10, 25, 235)
+
+[node name="paddle" parent="." instance=ExtResource("2_uhelh")]
+position = Vector2(166, 216)
