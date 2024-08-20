@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-const GRAV = 50
-const LIFT_VEL = 350.0
+const GRAV = 200
+const LIFT_VEL = 1500.0
+const MAX_VEL = 500.0
 
 var GAMEOVER
 
@@ -16,6 +17,8 @@ func _process(delta):
 	if Input.is_action_pressed("lift"):
 		if GAMEOVER == false:
 			velocity.y -= LIFT_VEL * delta
+			if velocity.y > MAX_VEL:
+				velocity.y = MAX_VEL
 		if GAMEOVER == true:
 			get_tree().reload_current_scene()
 	
